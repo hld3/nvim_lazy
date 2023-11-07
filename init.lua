@@ -56,6 +56,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
 	'ThePrimeagen/harpoon',
+	'alexghergh/nvim-tmux-navigation',
 	{
 		'navarasu/onedark.nvim',
 		config = function()
@@ -409,4 +410,16 @@ cmp.setup {
 		{ name = 'nvim_lsp' },
 		{ name = 'luasnip' },
 	},
+}
+
+local nvim_tmux_nav = require('nvim-tmux-navigation')
+nvim_tmux_nav.setup {
+	keybindings = {
+                left = "<C-h>",
+                down = "<C-j>",
+                up = "<C-k>",
+                right = "<C-l>",
+                last_active = "<C-\\>",
+                -- next = "<C-Space>",
+            }
 }
