@@ -57,10 +57,14 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
 	'ThePrimeagen/harpoon',
 	'alexghergh/nvim-tmux-navigation',
+	'mbbill/undotree',
+	'tpope/vim-fugitive',
 	{
-		'navarasu/onedark.nvim',
+		"catppuccin/nvim",
+		name = "catppuccin",
+		priority = 1000,
 		config = function()
-			vim.cmd.colorscheme 'onedark'
+			vim.cmd.colorscheme 'catppuccin-macchiato'
 		end,
 	},
 	{
@@ -105,7 +109,7 @@ require('lazy').setup({
 		opts = {
 			options = {
 				icons_enabled = false,
-				theme = 'onedark',
+				theme = 'catppuccin-macchiato',
 				component_separators = '|',
 				section_separators = '',
 			},
@@ -415,11 +419,14 @@ cmp.setup {
 local nvim_tmux_nav = require('nvim-tmux-navigation')
 nvim_tmux_nav.setup {
 	keybindings = {
-                left = "<C-h>",
-                down = "<C-j>",
-                up = "<C-k>",
-                right = "<C-l>",
-                last_active = "<C-\\>",
-                -- next = "<C-Space>",
-            }
+		left = "<C-h>",
+		down = "<C-j>",
+		up = "<C-k>",
+		right = "<C-l>",
+		last_active = "<C-\\>",
+		-- next = "<C-Space>",
+	}
 }
+
+vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
