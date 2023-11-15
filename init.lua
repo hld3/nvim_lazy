@@ -2,6 +2,9 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 -- personal keymaps
+-- split the screen
+vim.keymap.set("n", "<leader>p", ":split<CR>")
+vim.keymap.set("n", "<leader>o", ":vsplit<CR>")
 -- leave the file and return to the directory.
 vim.keymap.set("n", "<leader>ex", vim.cmd.Ex)
 -- format the current file.
@@ -39,6 +42,9 @@ if vim.fn.has("wsl") == 1 then
 		}
 	end
 end
+
+-- turn off the left side bar
+vim.cmd("set scl=no")
 
 -- install the package manager
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
