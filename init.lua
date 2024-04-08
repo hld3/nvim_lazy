@@ -144,6 +144,10 @@ require('lazy').setup({
 		},
 	},
 	{
+		"nvim-telescope/telescope-file-browser.nvim",
+		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+	},
+	{
 		-- Highlight, edit, and navigate code
 		'nvim-treesitter/nvim-treesitter',
 		dependencies = {
@@ -203,6 +207,7 @@ vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { de
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
+vim.keymap.set('n', '<leader>fb', ':Telescope file_browser<CR>', {desc = '[F]ile [B]rowser'})
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
@@ -436,3 +441,4 @@ nvim_tmux_nav.setup {
 
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
+vim.api.nvim_set_keymap('n', 'g?', '<cmd>lua vim.diagnostic.open_float()<CR>', { noremap = true, silent = true })
