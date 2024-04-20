@@ -155,6 +155,43 @@ require('lazy').setup({
 		},
 		build = ':TSUpdate',
 	},
+	{
+		"folke/trouble.nvim",
+		branch = "dev", -- IMPORTANT!
+		keys = {
+			{
+				"<leader>tX",
+				"<cmd>Trouble diagnostics toggle<cr>",
+				desc = "Diagnostics (Trouble)",
+			},
+			{
+				"<leader>tx",
+				"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+				desc = "Buffer Diagnostics (Trouble)",
+			},
+			{
+				"<leader>ts",
+				"<cmd>Trouble symbols toggle focus=false<cr>",
+				desc = "Symbols (Trouble)",
+			},
+			{
+				"<leader>tl",
+				"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+				desc = "LSP Definitions / references / ... (Trouble)",
+			},
+			{
+				"<leader>tL",
+				"<cmd>Trouble loclist toggle<cr>",
+				desc = "Location List (Trouble)",
+			},
+			{
+				"<leader>tq",
+				"<cmd>Trouble qflist toggle<cr>",
+				desc = "Quickfix List (Trouble)",
+			},
+		},
+		opts = {}, -- for default options, refer to the configuration section for custom setup.
+	}
 }, {})
 
 vim.o.nu = true
@@ -179,8 +216,8 @@ require('telescope').setup {
 	defaults = {
 		mappings = {
 			i = {
-				['<C-u>'] = false,
-				['<C-d>'] = false,
+				['<C-U>'] = false,
+				['<C-D>'] = false,
 			},
 		},
 	},
@@ -207,7 +244,7 @@ vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { de
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
-vim.keymap.set('n', '<leader>fb', ':Telescope file_browser<CR>', {desc = '[F]ile [B]rowser'})
+vim.keymap.set('n', '<leader>fb', ':Telescope file_browser<CR>', { desc = '[F]ile [B]rowser' })
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
@@ -320,7 +357,7 @@ local on_attach = function(_, bufnr)
 
 	-- See `:help K` for why this keymap
 	nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-	nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+	nmap('<leader>d', vim.lsp.buf.signature_help, 'Signature Documentation')
 
 	-- Lesser used LSP functionality
 	nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
@@ -430,10 +467,10 @@ cmp.setup {
 local nvim_tmux_nav = require('nvim-tmux-navigation')
 nvim_tmux_nav.setup {
 	keybindings = {
-		left = "<C-h>",
-		down = "<C-j>",
-		up = "<C-k>",
-		right = "<C-l>",
+		left = "<C-H>",
+		down = "<C-J>",
+		up = "<C-K>",
+		right = "<C-L>",
 		last_active = "<C-\\>",
 		-- next = "<C-Space>",
 	}
@@ -441,4 +478,10 @@ nvim_tmux_nav.setup {
 
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
-vim.api.nvim_set_keymap('n', 'g?', '<cmd>lua vim.diagnostic.open_float()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'g?', '<cmd>lua vim.diagnostic.open_float()<CR>', { noremap = true, silent = true }) -- can probably remove this after testing 'trouble' for a bit
+
+-- quickfix
+-- vim.keymap.set("n", "<C-K>", "<cmd>cnext<CR>zz")
+-- vim.keymap.set("n", "<C-J>", "<cmd>cprev<CR>zz")
+-- vim.keymap.set("n", "<leader>K", "<cmd>lnext<CR>zz")
+-- vim.keymap.set("n", "<leader>J", "<cmd>lprev<CR>zz")
