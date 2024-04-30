@@ -3,7 +3,7 @@ return {
     config = function()
         local treeconfig = require("nvim-treesitter.configs")
         treeconfig.setup({
-            ensure_installed = { "go", "lua" },
+            ensure_installed = { "go", "lua", "java" },
             highlight = { enable = true },
             indent = { enable = true },
             incremental_selection = {
