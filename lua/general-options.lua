@@ -43,7 +43,7 @@ if vim.fn.has("wsl") == 1 then
 end
 
 -- turn off the left side bar
-vim.cmd("set scl=no")
+-- vim.cmd("set scl=no")
 
 -- remove tabs/ fix spacing
 vim.cmd("set expandtab")
