@@ -65,3 +65,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     group = highlight_group,
     pattern = "*",
 })
+
+-- Neogit here to avoid config problems
+vim.keymap.set("n", "<leader>ng", ":Neogit<CR>", {})
