@@ -42,8 +42,8 @@ if vim.fn.has("wsl") == 1 then
     end
 end
 
--- turn off the left side bar
--- vim.cmd("set scl=no")
+-- toggle the left side bar; yes, no, auto
+vim.cmd("set scl=yes") -- on for gitsigns
 
 -- remove tabs/ fix spacing
 vim.cmd("set expandtab")
