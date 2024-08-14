@@ -51,13 +51,13 @@ return {
                 end
 
                 local servers = {
-                    -- clangd = {},
-                    -- gopls = {},
-                    -- pyright = {},
-                    -- rust_analyzer = {},
-                    -- tsserver = {},
-                    -- html = { filetypes = { "html", "twig", "hbs"} },
+                    -- dotnet can't be seen by csharp_ls when installing through snap.
+                    -- use the script here, https://learn.microsoft.com/en-us/dotnet/core/install/linux-scripted-manual#scripted-install
+                    -- or check out other options here, https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu
+                    -- I used the script, it worked, and found the second page afterwards.
+                    csharp_ls = {},
 
+                    gopls = {},
                     lua_ls = {
                         Lua = {
                             workspace = { checkThirdParty = false },
@@ -87,8 +87,6 @@ return {
                         }
                     end,
                 }
-
-                lspconfig.lua_ls.setup({})
             end
         },
         {
@@ -160,6 +158,10 @@ return {
                                 fallback()
                             end
                         end, { "i", "s" }),
+                    },
+                    window = {
+                        completion = cmp.config.window.bordered(),
+                        documentation = cmp.config.window.bordered(),
                     },
                     sources = {
                         { name = "nvim_lsp" },

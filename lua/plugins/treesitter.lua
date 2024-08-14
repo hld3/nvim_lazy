@@ -1,9 +1,9 @@
-return { 
+return {
     "nvim-treesitter/nvim-treesitter", build = ":TSUpdate",
     config = function()
         local treeconfig = require("nvim-treesitter.configs")
         treeconfig.setup({
-            ensure_installed = { "go", "lua", "java" },
+            ensure_installed = { "go", "lua", "java", "c_sharp" },
             highlight = { enable = true },
             indent = { enable = true },
             incremental_selection = {
