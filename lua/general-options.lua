@@ -18,29 +18,29 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 -- the above needs this when on wsl2
-if vim.fn.has("wsl") == 1 then
-    if vim.fn.executable("wl-copy") == 0 then
-        print("wl-clipboard not found, clipboard integration won't work")
-    else
-        vim.g.clipboard = {
-            name = "wl-clipboard (wsl)",
-            copy = {
-                ["+"] = 'wl-copy --foreground --type text/plain',
-                ["*"] = 'wl-copy --foreground --primary --type text/plain',
-            },
-            paste = {
-                ["+"] = (function()
-                    return vim.fn.systemlist('wl-paste --no-newline|sed -e "s/\r$//"', { '' }, 1) -- '1' keeps empty lines
-                end),
-                ["*"] = (function()
-                    return vim.fn.systemlist('wl-paste --primary --no-newline|sed -e "s/\r$//"',
-                        { '' }, 1)
-                end),
-            },
-            cache_enabled = true
-        }
-    end
-end
+-- if vim.fn.has("wsl") == 1 then
+--     if vim.fn.executable("wl-copy") == 0 then
+--         print("wl-clipboard not found, clipboard integration won't work")
+--     else
+--         vim.g.clipboard = {
+--             name = "wl-clipboard (wsl)",
+--             copy = {
+--                 ["+"] = 'wl-copy --foreground --type text/plain',
+--                 ["*"] = 'wl-copy --foreground --primary --type text/plain',
+--             },
+--             paste = {
+--                 ["+"] = (function()
+--                     return vim.fn.systemlist('wl-paste --no-newline|sed -e "s/\r$//"', { '' }, 1) -- '1' keeps empty lines
+--                 end),
+--                 ["*"] = (function()
+--                     return vim.fn.systemlist('wl-paste --primary --no-newline|sed -e "s/\r$//"',
+--                         { '' }, 1)
+--                 end),
+--             },
+--             cache_enabled = true
+--         }
+--     end
+-- end
 
 -- toggle the left side bar; yes, no, auto
 vim.cmd("set scl=yes") -- on for gitsigns
