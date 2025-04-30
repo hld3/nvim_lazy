@@ -55,7 +55,7 @@ return {
                     -- use the script here, https://learn.microsoft.com/en-us/dotnet/core/install/linux-scripted-manual#scripted-install
                     -- or check out other options here, https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu
                     -- I used the script, it worked, and found the second page afterwards.
-                    csharp_ls = {},
+                    -- csharp_ls = {},
 
                     gopls = {},
                     lua_ls = {
