@@ -1,0 +1,4 @@
+#!/bin/bash
+export _JAVA_AWT_WM_NONREPARENTING=1
+export IDEA_JVM_ARGS="--add-opens java.desktop/java.awt=ALL-UNNAMED"
+/usr/bin/idea
