@@ -22,7 +22,9 @@ set $menu wofi --show drun
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+# output * bg /home/thedod/Pictures/backgrounds/fallback.png fill
+exec_always swaybg -i /home/thedod/Pictures/backgrounds/arch_catpuccin_background.jpg -m fill
+# exec_always swaybg --output HDMI-A-1 -i /home/thedod/Pictures/backgrounds/sword.jpg -m fill
 #
 # Example configuration:
 #
@@ -91,7 +93,7 @@ output DP-1 resolution 1920x1080 position 1920,0
 #
 # App keybinds
 #
-    bindsym $mod+space exec firefox
+    bindsym $mod+space exec env MOZ_ENABLE_WAYLAND=1 firefox
     bindsym $mod+i+j exec ideatest
 #
 # Moving around:
