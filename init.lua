@@ -13,3 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("general-options")
 require("lazy").setup("plugins")
+
+vim.keymap.set("n", "<C-f>", function()
+    vim.fn.jobstart({ "tmux", "neww", "tmux-sessionizer" }, { detach = true })
+end, { desc = "Open Tmux Sessionizer" })
