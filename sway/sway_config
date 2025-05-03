@@ -17,7 +17,7 @@ set $right l
 # Your preferred terminal emulator
 set $term foot
 # Your preferred application launcher
-set $menu rofi --show drun
+set $menu rofi -show drun 
 
 ### Output configuration
 #
@@ -95,6 +95,7 @@ output DP-1 resolution 1920x1080 position 1920,0
 #
     bindsym $mod+space exec env MOZ_ENABLE_WAYLAND=1 firefox
     bindsym $mod+i+j exec ideatest
+    bindsym Ctrl+f exec $term tmux neww tmux-sessionizer
 #
 # Moving around:
 #
