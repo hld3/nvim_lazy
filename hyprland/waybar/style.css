@@ -46,6 +46,7 @@ window#waybar {
 #backlight,
 #clock,
 #battery,
+#network,
 #pulseaudio,
 #custom-lock,
 #custom-power {
