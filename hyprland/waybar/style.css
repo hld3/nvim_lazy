@@ -1,7 +1,7 @@
 @import "frappe.css";
 
 * {
-  font-family: "JetBrainsMono Nerd Font", sans-serif;
+  font-family: "Hack Nerd Font", sans-serif;
   font-size: 13px;
   min-height: 15px;
 }
@@ -60,7 +60,7 @@ window#waybar {
 
 #clock {
   color: @blue;
-  border-radius: 0px 1rem 1rem 0px;
+  border-radius: 1rem;
   margin-right: 1rem;
 }
 
