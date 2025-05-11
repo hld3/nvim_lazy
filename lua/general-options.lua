@@ -2,8 +2,8 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 -- split the screen
-vim.keymap.set("n", "<leader>i", ":split<CR>")
-vim.keymap.set("n", "<leader>o", ":vsplit<CR>")
+vim.keymap.set("n", "<leader>g", ":split<CR>")
+vim.keymap.set("n", "<leader>v", ":vsplit<CR>")
 -- leave the file and return to the directory.
 vim.keymap.set("n", "<leader>ex", vim.cmd.Ex)
 -- format the current file.
