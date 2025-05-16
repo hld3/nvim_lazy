@@ -51,7 +51,7 @@ vim.cmd("set tabstop=4")
 vim.cmd("set softtabstop=4")
 vim.cmd("set shiftwidth=4")
 
-vim.o.nu = true
+vim.o.number = true
 vim.o.relativenumber = true
 vim.o.hlsearch = false
 vim.opt.termguicolors = true
