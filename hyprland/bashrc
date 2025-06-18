@@ -9,3 +9,7 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 # kinda catpuccin
 PS1='[\[\033[1m\033[38;2;202;158;230m\]\t\[\033[00m\] \[\033[1m\033[38;2;140;170;238m\]\u@\h\[\033[00m\] \[\033[1m\033[38;2;229;200;144m\]\W\[\033[00m\]]$ '
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

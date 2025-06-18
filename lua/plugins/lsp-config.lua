@@ -5,14 +5,7 @@ return {
             "neovim/nvim-lspconfig",
             config = function()
                 local lspconfig = require("lspconfig")
-                --  This function gets run when an LSP connects to a particular buffer.
                 local on_attach = function(_, bufnr)
-                    -- NOTE: Remember that lua is a real programming language, and as such it is possible
-                    -- to define small helper and utility functions so you don"t have to repeat yourself
-                    -- many times.
-                    --
-                    -- In this case, we create a function that lets us more easily define mappings specific
-                    -- for LSP related items. It sets the mode, buffer and description for us each time.
                     local nmap = function(keys, func, desc)
                         if desc then
                             desc = "LSP: " .. desc
@@ -50,57 +43,8 @@ return {
                     end, { desc = "Format current buffer with LSP" })
                 end
 
-                local servers = {
-                    -- dotnet can't be seen by csharp_ls when installing through snap.
-                    -- use the script here, https://learn.microsoft.com/en-us/dotnet/core/install/linux-scripted-manual#scripted-install
-                    -- or check out other options here, https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu
-                    -- I used the script, it worked, and found the second page afterwards.
-                    -- csharp_ls = {},
-
-                    gopls = {},
-                    lua_ls = {
-                        Lua = {
-                            workspace = { checkThirdParty = false },
-                            telemetry = { enable = false },
-                        },
-                    },
-                }
-
-                -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
-                local capabilities = vim.lsp.protocol.make_client_capabilities()
-                capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
-
-                -- Ensure the servers above are installed
-                local mason_lspconfig = require "mason-lspconfig"
-
-                mason_lspconfig.setup {
-                    ensure_installed = vim.tbl_keys(servers),
-                }
-
-                mason_lspconfig.setup_handlers {
-                    function(server_name)
-                        require("lspconfig")[server_name].setup {
-                            capabilities = capabilities,
-                            on_attach = on_attach,
-                            settings = servers[server_name],
-                            filetypes = (servers[server_name] or {}).filetypes,
-                        }
-                    end,
-                }
-            end
-        },
-        {
-            "williamboman/mason.nvim",
-            config = function()
-                require("mason").setup()
-            end
-        },
-        {
-            "williamboman/mason-lspconfig.nvim",
-            config = function()
-                require("mason-lspconfig").setup({
-                    ensure_installed = { "lua_ls", "gopls", "jdtls", "jsonls" }
-                })
+                lspconfig.gopls.setup { on_attach = on_attach }
+                lspconfig.lua_ls.setup { on_attach = on_attach }
             end
         },
         {
